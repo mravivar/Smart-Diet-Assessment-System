@@ -87,7 +87,6 @@ delete 'noneat_tmp.csv';
 end
 
 
-
 %     Label = splitlines("Eating Action "+i+" Orient X\n" + "Eating Action "+i+" Orient Y\n" + "Eating Action "+i+" orient Z\n" +"Eating Action "+i+" Orient W\n");
 %     Label = compose(Label);
 %     fprintf(resFileID, '%s', Label);
