@@ -7,7 +7,7 @@ calculate_fft('noneating.csv', 'noneating_fft.csv');
 
 function calculate_fft(ifilename,ofilename)
     action=csvread(ifilename);
-    dlmwrite(ofilename,fft(action,1,2),'w') ;
+    dlmwrite(ofilename,fft(action),'w') ;
 end
 
 
