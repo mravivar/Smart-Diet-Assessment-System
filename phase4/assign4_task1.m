@@ -13,12 +13,14 @@ y2 = [eating_test_y; noneating_test_y];
 
 decision_tree(X, y, X2, y2);
 svm(X, y, X2, y2);
+neural_net(X, y, X2, y2);
+
+
 
 function decision_tree(X, y, X2, y2)
     tc = fitctree(X, y);
     % known, predicted
     predicted = predict (tc, X2);
-    
     confusionMat = confusionmat(y2,predicted);
     precision = confusionMat(1,1) / (confusionMat(1,1) + confusionMat(2,1));
     recall = confusionMat(1,1) / (confusionMat(1,1) + confusionMat(1,2));
@@ -30,6 +32,10 @@ function decision_tree(X, y, X2, y2)
     disp(recall);
     disp("F1score:");
     disp(f1score);
+    [tpr,fpr,th] = roc(y2',predicted');
+
+    fprintf("ROC TRUE POSITIVE RATE: %s \n", num2str(tpr(2)*100));
+    fprintf("ROC FALSE POSITIVE RATE: %s \n", num2str(fpr(2)*100));
     
 end
 
@@ -44,11 +50,15 @@ function svm(X, y, X2, y2)
     f1score = 2 * (precision * recall)/(precision + recall);
     disp("***********SVM*************");
     disp("precision:");
-    disp(precision);
+    disp(precision*100);
     disp("Recall:");
-    disp(recall);
+    disp(recall*100);
     disp("F1score:");
-    disp(f1score);
+    disp(f1score*100);
+    [tpr,fpr,th] = roc(y2',predicted');
+    fprintf("ROC TRUE POSITIVE RATE: %s \n", num2str(tpr(2)*100));
+    fprintf("ROC FALSE POSITIVE RATE: %s \n", num2str(fpr(2)*100));
+    
     
 end
 
@@ -61,6 +71,32 @@ function [dataTraining, dataTesting] = splitdata(filename)
     tf = tf(randperm(N));   % randomise order
     dataTraining = dataA(tf,:); 
     dataTesting = dataA(~tf,:);
+end
+
+function neural_net(X, y, X2, y2)
+
+net = feedforwardnet(1);
+%net = configure(net,X',y');
+net = train(net,X',y');
+predicted = net(X2');
+predicted = round(predicted);
+predicted = predicted';
+confusionMat = confusionmat(y2,predicted);
+precision = confusionMat(1,1) / (confusionMat(1,1) + confusionMat(2,1));
+recall = confusionMat(1,1) / (confusionMat(1,1) + confusionMat(1,2));
+f1score = 2 * (precision * recall)/(precision + recall);
+disp("***********NEURAL NETWORK*************");
+disp("precision:");
+disp(precision);
+disp("Recall:");
+disp(recall);
+disp("F1score:");
+disp(f1score*100);
+[tpr,fpr,th] = roc(y2',predicted');
+fprintf("ROC TRUE POSITIVE RATE: %s \n", num2str(tpr(2)*100));
+fprintf("ROC FALSE POSITIVE RATE: %s \n", num2str(fpr(2)*100));
+disp(f1score);
+    
 end
 
 %{
