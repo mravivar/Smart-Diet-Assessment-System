@@ -1,11 +1,6 @@
-
-
-CSE 572 Data Mining Assignment 2
-Due Date: September 6, 2017
-Smart Diet Assessment Project
 For figures: open the above .docx file
 
-Phase two (Due September 6) – Data annotation 
+Phase two – Data annotation 
 Task 1 - Download the data of your own group from the following link (https://drive.google.com/open?id=0B8udLM8htaYwZDNkOVdQSWdVLXM). Note that, you have to use your ASU account to access this link. Each file is named after group leader. Each file includes two folders, “fork” and “spoon”. Within each folder, you will find three files. They are *.mp4, *_EMG.txt, *_IMU.txt. For assignment 2, you only need the mp4 file.
 
 Task 2 - Open video file using the tool provided. We will provide you a tool to annotate your video. Please download Labeling.m and Labeling.fig on Blackboard and run Labeling.m in Matlab. Labeling.m and Labeling.fig must be in the same folder.  A window should show up as figure 1.
