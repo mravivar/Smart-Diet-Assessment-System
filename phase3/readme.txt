@@ -1,8 +1,4 @@
-CSE 572 Data Mining Assignment 3
-Due Date: 18th October, 2017
-Points Possible 120
-
-This project involves feature extraction and feature selection aspects of Data Mining. You will be working with the raw sensor data that you collected and annotated in your Assignments 1 and 2. In your raw data there are 17 data streams: a) 3 from accelerometer, b) 3 from gyroscope, c) 3 from orientation, and d) 8 from EMG sensors. 
+This phase involves feature extraction and feature selection aspects of Data Mining. You will be working with the raw sensor data that you collected and annotated in your Assignments 1 and 2. In your raw data there are 17 data streams: a) 3 from accelerometer, b) 3 from gyroscope, c) 3 from orientation, and d) 8 from EMG sensors. 
 
 Task 1: (20 points)
 Write a matlab code that uses the annotations from the Assignment 2 and segments the raw data into two separate classes: a) eating, and b) non-eating actions. These two classes can be stored in two separate csv files. In the each csv file you can store the time series for an action columnwise and each row indicates a given sensor. Append multiple actions in rows. For example the eating action csv file should look like the following:
